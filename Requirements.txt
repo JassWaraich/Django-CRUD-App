@@ -1,0 +1,13 @@
+Requirements
+
+1. Download Python from https://www.python.org/downloads
+2. Optional:It is better to use a Virtual Environment.Set up using: pip install virtualenv and activate it.
+3. Install Django using: pip install django
+4. I am using MySQl as Backend, Install:pip install mysqlclient 
+
+Other Optional Pacakges Used:
+
+pip install django-crispy-forms
+pip istall django-widget-tweaks
+pip install django-filter
+pip instal dj-static
