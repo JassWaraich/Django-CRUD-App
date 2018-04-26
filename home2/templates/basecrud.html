@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Account {% endblock title %}</title>
+
+ {% block head_favicon %}
+  <link rel="icon" type="image/png" href="{{ STATIC_URL }}login/images/icons/favicon1.ico">
+
+ {% endblock head_favicon %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}crud/css/bootstrap.min.css">
+    
+
+    
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}crud/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}crud/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}crud/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}crm/css/app.css">
+    
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}table/vendor/animate/animate.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}table/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}table/css/util.css">
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}table/css/main.css">
+  
+<header>
+            <div class="navbar navbar-default navbar-static-top
+            {% block nav-style %}{% endblock %}">
+                <div class="container p-none">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle"
+                                data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <li><button class="navbar-toggle" onclick="myFunction()" type="submit">Clear Filter</button></li>
+                              
+                        </button>
+                        <a class="navbar-brand" target="_blank" href="">Welcome </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+
+                            {% if user.is_authenticated %}
+                                <li><a href="/logout/">Logout</a></li>
+                            {% else %}
+                                <li><a href="/login/">Login</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+</header>
+</head>
+  <body>
+  
+
+    
+    
+    {% if avails.has_other_pages %}
+  <ul class="pagination">
+    {% if avails.has_previous %}
+      <li><a href="?page={{ avails.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in avails.paginator.page_range %}
+      {% if avails.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if avails.has_next %}
+      <li><a href="?page={{ avails.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+
+{% endif %}
+
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script src="{% static 'crud/js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'crud/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'table/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'crud/js/plugin.js' %}"></script>
+    <script src="{% static 'crud/js/bootstrap.js' %}"></script>
+    <script src="{% static 'crud/js/refresh.js' %}"></script>
+    <script src="{% static 'table/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'table/vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'table/js/perfectScroll.js' %}"></script>
+    <script src="{% static 'table/js/main.js' %}"></script>
+    {% block javascript %}
+    {% endblock %}
+  </body>
+</html>

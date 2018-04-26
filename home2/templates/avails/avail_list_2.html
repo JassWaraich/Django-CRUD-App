@@ -1,0 +1,22 @@
+
+{% for avail in avails %}
+  <tr class="row100 body" >
+    <td class="cell100 column1">{{avail.row_date }}</td>
+    <td class="cell100 column2">{{avail.director }}</td>
+    <td class="cell100 column3">{{avail.manager }}</td>
+    <td class="cell100 column4">{{avail.analyst }}</td>
+    <td class="cell100 column5">{{avail.availability_adherence}}</td>
+    <td class="cell100 column6">
+        <button class="btn btn-warning show-form-update" data-url="{% url 'avail_update' avail.id %}">
+        <span class="glyphicon glyphicon-pencil"></span>
+        Edit
+        </button>
+    </td>  
+  </tr>
+
+{% empty %}
+  <tr>
+    <td colspan="7" class="text-center bg-warning">Aghhh! No Results Found!</td>
+  </tr>
+{% endfor %}
+

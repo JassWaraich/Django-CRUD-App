@@ -1,0 +1,146 @@
+{# HTML5 declaration #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{% block title %}Login {% endblock title %}</title>
+
+ {% block head_favicon %}
+	<link rel="icon" type="image/png" href="{{ STATIC_URL }}login/images/icons/favicon1.ico">
+ {% endblock head_favicon %}
+
+ {% block head_meta %}
+		 {% block head_meta_charset %}
+				 <meta http-equiv="Content-Type"
+							 content="text/html; charset=utf-8" />
+		 {% endblock head_meta_charset %}
+		 {% block head_meta_contentlanguage %}
+				 <meta http-equiv="Content-Language" value="en-US" />
+		 {% endblock head_meta_contentlanguage %}
+		 {% block head_meta_viewport %}
+ 				<meta name="viewport"
+ 							content="width=device-width, initial-scale=1.0">
+ 		{% endblock head_meta_viewport %}
+ {% endblock head_meta %}
+ {% block head_css %}
+    {% block head_css_site %}
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/css/util.css">
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}login/css/main.css">
+<!--===============================================================================================-->
+   {% endblock head_css_site %}
+{% block head_css_section %}{% endblock head_css_section %}
+{% block head_css_page %}{% endblock head_css_page %}
+{% endblock head_css %}
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<form class="login100-form validate-form" method="post"
+        action="{% url 'login' %}">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-70">
+						Welcome.
+					</span>
+					<span class="login100-form-avatar">
+						<img src="{{ STATIC_URL }}login/images/bb1.gif" alt="AVATAR">
+					</span>
+
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+						<input class="input100" type="text" name="username">
+						<span class="focus-input100" data-placeholder="Username"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+						<input class="input100" type="password" name="password">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
+					{% if form.errors %}
+              <p>
+              Your username and password didn't match.Please try again!
+              </p>
+          {% endif %}
+					<ul>
+						{% if user.is_authenticated %}
+                          <li>You are already logged in. <a href="/logout/">Logout </a>or go to<a href="/account/"> Account</a></li>
+                          
+
+						 
+
+						{% endif %}
+				</ul>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="footer">
+                       <div class="container">
+                        <p>
+            
+						<span class="txt1">
+							Developed and Desgined with
+							<i class="made-with-love">♥</i>
+						</span>
+						<a target="_blank"
+						  href="https://www.linkedin.com/in/iamjaspreet" class="txt2" >
+							by Jaspreet Singh
+						</a>
+					
+                        </p>
+					</div>
+                   </div>
+				</form>
+               </div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+	</body>
+	{% block footer_javascript %}
+	 {% block footer_javascript_site %}
+
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/vendor/bootstrap/js/popper.js"></script>
+	<script src="{{ STATIC_URL }}login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/vendor/daterangepicker/moment.min.js"></script>
+	<script src="{{ STATIC_URL }}login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="{{ STATIC_URL }}login/js/main.js"></script>
+	{% endblock footer_javascript_site %}
+	{% block footer_javascript_section %}{% endblock footer_javascript_section %}
+	{% block footer_javascript_page %}{% endblock footer_javascript_page %}
+{% endblock footer_javascript %}
+
+
+</html>
